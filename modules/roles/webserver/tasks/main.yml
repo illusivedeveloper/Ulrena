@@ -1,0 +1,29 @@
+# tasks file for websever
+
+- name: Installing httpd in RedHat
+  package: 
+        name: "{{ p }}"
+        state: present
+  when: ansible_os_family == "RedHat"
+
+- name: Installing apache2 in ubuntu
+  apt:
+        name: "{{ q }}"
+        state: present 
+  when: ansible_os_family == "Debian"
+
+- name: copying webpage to document root 
+  copy:
+        dest: "/var/www/html"
+        src: "index.html"
+  when: ansible_os_family == "RedHat"
+
+- name: service start 
+  service:
+        name: "{{ p }}"
+        state: started 
+  when: ansible_os_family == "RedHat"
+
+
+ 
+

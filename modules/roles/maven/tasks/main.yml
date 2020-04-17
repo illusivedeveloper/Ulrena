@@ -1,0 +1,31 @@
+# tasks file for maven
+
+- name: Transferring the maven tar
+  copy:
+        src: apache-maven-3.6.3-bin.tar.gz
+        dest: /opt
+  when: ansible_os_family == "RedHat"
+
+- name: unzipping 
+  unarchive:
+        src: /opt/apache-maven-3.6.3-bin.tar.gz
+        dest: /opt
+  when: ansible_os_family == "RedHat"
+
+- name: configuring environment 
+  copy:
+        src: maven.sh
+        dest: /etc/profile.d/
+        mode: '0755'
+  when: ansible_os_family == "RedHat"
+
+- name: loading configuration
+  shell: source /etc/profile.d/maven.sh
+  when: ansible_os_family == "RedHat"
+
+- name: Installing maven in Ubuntu
+  apt:
+        name: "{{ p }}"
+        state: present
+  when: ansible_os_family == "Debian"
+      

@@ -1,0 +1,21 @@
+# tasks file for git
+
+- name: Copy the repo file to the remote server
+  copy:
+        src: "git.repo"
+        dest: "/etc/yum.repos.d/"
+  when: ansible_os_family == "RedHat"
+
+- name: Installing the git on RedHat
+  package:
+        name: "{{ p }}"
+        state: present
+  when: ansible_os_family == "RedHat"
+
+- name: Installing the git on ubuntu
+  apt:
+        name: "{{ p }}"
+        state: present
+  when: ansible_os_family == "Debian"
+ 
+         

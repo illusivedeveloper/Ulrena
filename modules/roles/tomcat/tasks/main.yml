@@ -1,0 +1,52 @@
+# tasks file for tomcat
+
+- name: Transferring the tomcat tar
+  copy:
+        src: apache-tomcat-9.0.31.tar.gz
+        dest: /opt
+
+- name: unzipping
+  unarchive:
+        src: /opt/apache-tomcat-9.0.31.tar.gz
+        dest: /opt
+
+- name: looking up shell files
+  find:
+        paths: /opt/apache-tomcat-9.0.31.tar.gz/bin
+        file_type: file
+        patterns: "*.sh"
+  register: filelist
+
+- name: changing permissions
+  file:
+        path:  "{{ item.path }}"
+        state: file
+        owner: root
+        group: root
+        mode: "0755"
+  with_items: "{{ filelist.files }}"
+
+- name: Creating symlink to start tomcat
+  file:
+        src: /opt/apache-tomcat-9.0.31/bin/startup.sh
+        dest: /usr/bin/startTomcat
+        state: link
+
+- name: Creating symlink to stop tomcat
+  file:
+        src: /opt/apache-tomcat-9.0.31/bin/shutdown.sh
+        dest: /usr/bin/stopTomcat
+        state: link
+  
+- name: Transferring the context.xml
+  copy:
+        src: context.xml
+        dest: /opt/apache-tomcat-9.0.31/webapps/manager/META-INF/
+
+- name: Transferring the tomcat-users.xml
+  copy:
+        src: tomcat-users.xml
+        dest: /opt/apache-tomcat-9.0.31/conf
+
+- name: Starting the tomcat service
+  command: startTomcat

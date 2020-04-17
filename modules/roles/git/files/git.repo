@@ -1,0 +1,5 @@
+[wandisco-git]
+name=Wandisco GIT Repository
+baseurl=http://opensource.wandisco.com/rhel/7/git/$basearch/
+gpgcheck=0
+

@@ -1,0 +1,4 @@
+# vars file for websever
+
+p: "httpd"
+q: "apache2"
