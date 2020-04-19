@@ -9,3 +9,7 @@ def index():
 @app.route("/error")
 def error():
     return render_template("error.html")
+
+@app.route("/ip")
+def ip():
+    return render_template("ip.html")

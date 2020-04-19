@@ -1,10 +1,8 @@
 <!DOCTYPE HTML>
-<!--
-	Autron 
--->
+
 <html>
 	<head>
-		<title>Autron</title>
+		<title>ULRENA</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}" />
@@ -13,21 +11,17 @@
 	<body class="homepage is-preload">
 		<div id="page-wrapper">
 
-			<!-- Header -->
-				<div id="header">
-                        <div class="inner">
-                            <!-- Inner -->
-                            <form action="{{ url_for('shell') }}" method='GET'>
-                                    <label> Remote IP addresses: </label>
-                                    <input type="text" name="ipaddr">
-                                    <button type="submit"> Submit </button>
-                                </form>
-						</div>
-                        </div>
-                        
-                          
-		
-		<!-- Scripts -->
+            <div id="header">
+                <div class="inner">
+                    <form action="{{ url_for('index') }}" method='GET'>
+                            <label> Remote IP addresses(Seperated by ","): </label>
+                            <input type="text" name="ipaddr">
+                            <button type="submit"> Submit </button>
+                        </form>
+                </div>
+                </div>
+
+
 			<script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
 			<script src="{{ url_for('static', filename='assets/js/jquery.dropotron.min.js') }}"></script>
 			<script src="{{ url_for('static', filename='assets/js/jquery.scrolly.min.js') }}"></script>
