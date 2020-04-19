@@ -1,0 +1,31 @@
+# tasks file for sonarqube
+
+- name: Coping the sonarqube zip
+  copy:
+        src: sonarqube-7.8.zip
+        dest: /opt
+
+- name: unzipping sonarqube
+  unarchive:
+        src: /opt/sonarqube-7.8.zip
+        dest: /opt
+
+- name: Add the user 'sonar' for security reasons
+  user:
+        name: sonar
+        shell: /bin/bash
+
+- name: Giving sudo previleges
+  copy:
+        src: sudoers
+        dest: /etc/sudoers
+
+- name: Changing the permissions owner and group of the sonarqube
+  file:
+        path: /opt/sonarqube-7.8
+        state: directory
+        mode: '0755'
+        owner: sonar
+        group: sonar
+        
+

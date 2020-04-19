@@ -1,0 +1,45 @@
+# tasks file for jenkins
+
+- name: Copy the repo file to the remote server
+  copy:
+        src: "jenkins.repo"
+        dest: "/etc/yum.repos.d/"
+  when: ansible_os_family == "RedHat"
+
+- name: Installing the jenkins on RedHat
+  package:
+        name: "{{ p }}"
+        state: present
+  when: ansible_os_family == "RedHat"
+
+- name: service start
+  service:
+        name: "{{ p }}"
+        state: started
+        enabled: yes
+  when: ansible_os_family == "RedHat"
+
+- name: Adding apt key for installing in ubuntu
+  apt_key:
+    url: https://pkg.jenkins.io/debian-stable/jenkins.io.key
+    state: present
+  when: ansible_os_family == "Debian"
+
+- name: Configuring repository in Ubuntu
+  apt_repository:
+    repo: deb https://pkg.jenkins.io/debian-stable binary/
+    state: present
+  when: ansible_os_family == "Debian"
+
+- name: Installing the jenkins on ubuntu
+  apt:
+        name: "{{ p }}"
+        state: present
+        update_cache: yes
+  when: ansible_os_family == "Debian"
+
+- name: Service start
+  service:
+        name: "{{ p }}"
+        state: started
+  when: ansible_os_family == "Debian"
