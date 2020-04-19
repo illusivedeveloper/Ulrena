@@ -1,21 +1,8 @@
-[centos]
-localhost
-54.167.207.39
-54.92.181.53
-
-[ubuntu]
-3.81.76.114
-18.234.68.180
-
-[centos:vars]
-ansible_user=ec2-user
-
-[ubuntu:vars]
-ansible_user=ubuntu
-
 [machines:vars]
 ansible_ssh_private_key_file=./useast2.pem
 
-[machines:children]
-centos
-ubuntu
+[machines]
+54.167.181.100
+3.82.217.110
+52.91.189.218
+18.204.207.79
