@@ -2,7 +2,4 @@
 ansible_ssh_private_key_file=./useast2.pem
 
 [machines]
-54.167.181.100
-3.84.59.102
-52.91.189.218
-54.161.183.217
+45455
