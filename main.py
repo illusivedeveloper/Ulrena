@@ -5,7 +5,7 @@ import shlex
 
 app = Flask(__name__)
 
-git = "cd /home/$USER/Projects/Ulrena/modules; ansible-playbook git.yml"
+git = "cd /home/$USER/Ulrena/modules; ansible-playbook git.yml"
 apache = "cd /home/$USER/Ulrena/modules; ansible-playbook webserver.yml"
 maven = "cd /home/$USER/Ulrena/modules; ansible-playbook maven.yml"
 tomcat = "cd /home/$USER/Ulrena/modules; ansible-playbook tomcat.yml"
