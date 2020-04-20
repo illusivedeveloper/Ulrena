@@ -7,6 +7,7 @@ Ulrena ansible scripts
 * Run ```user.sh, ubuntu_sw.sh, ansible_install.sh``` on master ubuntu system.
 * Run ```user.sh``` on all the systems.
 * Run ```redhat_sw.sh```
+* Run last command on all ubuntu worker systems from ```ubuntu_sw.sh```. 
 
 2. Activate virtualenv: ```virtualenv -p python3 .```
 3. Install all requirements: ```pip3 install -r requirements.txt```
