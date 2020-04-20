@@ -6,10 +6,14 @@
         dest: /opt
   when: ansible_os_family == "RedHat"
 
-- name: unzipping 
-  unarchive:
-        src: /opt/apache-maven-3.6.3-bin.tar.gz
-        dest: /opt
+#- name: unzipping 
+#  unarchive:
+#        src: /opt/apache-maven-3.6.3-bin.tar.gz
+#        dest: /opt/
+#  when: ansible_os_family == "RedHat"
+
+- name: unzipping
+  command: sudo runuser -l root -c tar -xvzf /opt/apache-maven-3.6.3-bin.tar.gz
   when: ansible_os_family == "RedHat"
 
 - name: configuring environment 
