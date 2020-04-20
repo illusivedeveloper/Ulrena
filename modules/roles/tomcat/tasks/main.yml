@@ -48,5 +48,11 @@
         src: tomcat-users.xml
         dest: /opt/apache-tomcat-9.0.31/conf
 
+- name: Changing the port of tomcat
+  copy:
+        src: server.xml
+        dest: /opt/apache-tomcat-9.0.31/conf
+
+
 - name: Starting the tomcat service
   command: startTomcat
