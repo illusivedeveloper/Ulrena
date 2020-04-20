@@ -1,11 +1,13 @@
 # Ulrena - Utility Arena
 Ulrena ansible scripts
 
-* Masternode as Ubuntu.
-* Run all three ssh on master.
-* Run user.sh on all the systems.
+1. ```Clone``` at ```/home/$USER/``` and ```cd``` to directory.
 
-1. ```Clone``` and ```cd``` to directory.
+* Masternode as Ubuntu.
+* Run ```user.sh, ubuntu_sw.sh, ansible_install.sh``` on master ubuntu system.
+* Run ```user.sh``` on all the systems.
+* Run ```redhat_sw.sh```
+
 2. Activate virtualenv: ```virtualenv -p python3 .```
 3. Install all requirements: ```pip3 install -r requirements.txt```
 4. Set flask env: ```export FLASK_APP=main.py```
