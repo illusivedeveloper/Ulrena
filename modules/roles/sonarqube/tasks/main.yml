@@ -1,15 +1,17 @@
 # tasks file for sonarqube
 
-- name: Copying the sonarqube zip
-  copy:
-        src: sonarqube-7.8.zip
-        dest: /opt
+#- name: Copying the sonarqube zip
+#  copy:
+#        src: sonarqube-7.8.zip
+#        dest: /opt
 
 #- name: unzipping sonarqube
 #  unarchive:
 #        src: /opt/sonarqube-7.8.zip
 #        dest: /opt
 
+- name: Downloading Sonarqube 7.8
+  command: wget -P /opt/ https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.8.zip
 - name: unzipping
   command: sudo runuser -l root -c 'unzip /opt/sonarqube-7.8.zip -d /opt/'
 
