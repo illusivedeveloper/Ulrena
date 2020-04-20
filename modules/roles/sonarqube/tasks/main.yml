@@ -1,6 +1,6 @@
 # tasks file for sonarqube
 
-- name: Coping the sonarqube zip
+- name: Copying the sonarqube zip
   copy:
         src: sonarqube-7.8.zip
         dest: /opt
@@ -15,10 +15,13 @@
         name: sonar
         shell: /bin/bash
 
-- name: Giving sudo previleges
-  copy:
-        src: sudoers
-        dest: /etc/sudoers
+#- name: Giving sudo previleges
+#  copy:
+#        src: sudoers
+#        dest: /etc/sudoers
+
+- name: Givin sudo privileges to sonar user
+  command: echo "ansible ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/ansible
 
 - name: Changing the permissions owner and group of the sonarqube
   file:
