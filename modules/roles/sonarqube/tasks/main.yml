@@ -12,8 +12,15 @@
 
 - name: Downloading Sonarqube 7.8
   command: wget -P /opt/ https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.8.zip
+
+#- name: Installing Unzip in Ubuntu
+#  apt:
+#        name: unzip
+#        state: present
+#  when: ansible_os_family == "Debian"
+
 - name: unzipping
-  command: sudo runuser -l root -c 'unzip /opt/sonarqube-7.8.zip -d /opt/'
+  command: sudo runuser -l root -c 'tar -C  /opt/ -xvf /opt/sonarqube-7.8.zip'
 
 
 - name: Add the user 'sonar' for security reasons
