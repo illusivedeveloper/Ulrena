@@ -43,6 +43,6 @@
 -->
 
   
- <user username="jaigupta" password="root" roles="manager-gui, admin-gui" /> 	
+ <user username="ansible" password="ansible" roles="manager-gui, admin-gui" /> 	
 
 </tomcat-users>
