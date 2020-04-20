@@ -55,4 +55,4 @@
 
 
 - name: Starting the tomcat service
-  command: startTomcat
+  command: sudo runuser -l root -c startTomcat
